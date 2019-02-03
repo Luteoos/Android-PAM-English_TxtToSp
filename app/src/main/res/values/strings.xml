@@ -1,3 +1,7 @@
 <resources>
     <string name="title">Easy English</string>
+    <string name="api_error">Server response failed!</string>
+    <string name="no_internet">No connection!</string>
+    <string name="no_information">No Information</string>
+    <string name="pick_unit">Choose Unit:</string>
 </resources>

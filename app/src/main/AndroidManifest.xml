@@ -31,5 +31,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".view.activity.MainScreenActivity"
+                  android:theme="@style/LandingTheme"
+                  android:windowSoftInputMode="stateAlwaysHidden"/>
+
     </application>
 </manifest>
