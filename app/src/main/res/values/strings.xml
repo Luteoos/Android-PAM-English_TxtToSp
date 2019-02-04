@@ -4,4 +4,6 @@
     <string name="no_internet">No connection!</string>
     <string name="no_information">No Information</string>
     <string name="pick_unit">Choose Unit:</string>
+    <string name="pick_task">Choose Task:</string>
+    <string name="list_empty">List is empty!</string>
 </resources>
