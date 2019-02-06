@@ -35,5 +35,12 @@
                   android:theme="@style/LandingTheme"
                   android:windowSoftInputMode="stateAlwaysHidden"/>
 
+        <activity android:name=".view.activity.PicturePracticeActivity"
+                  android:theme="@style/LandingTheme"
+                  android:windowSoftInputMode="stateAlwaysHidden"/>
+
+        <activity android:name=".view.activity.PictureTestActivity"
+                  android:theme="@style/LandingTheme"
+                  android:windowSoftInputMode="stateAlwaysHidden"/>
     </application>
 </manifest>

@@ -48,7 +48,7 @@ object RestApi {
         httpClient.addInterceptor { chain ->
             val original = chain.request()
             val requestBuilder = original.newBuilder()
-                .header("Content-Type", "charset=utf-8; application/x-www-form-urlencoded")
+                .header("Content-Type", "application/json")
                 .header("Authorization","")
                 .header("Accept", "application/json")
                 .method(original.method(), original.body())

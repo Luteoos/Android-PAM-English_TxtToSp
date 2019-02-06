@@ -8,6 +8,7 @@ import com.luteoos.kotlin.mvvmbaselib.BaseFragmentMVVM
 import es.dmoral.toasty.Toasty
 import io.github.luteoos.learnenglish.R
 import io.github.luteoos.learnenglish.network.response.ResponseUnit
+import io.github.luteoos.learnenglish.utils.Parameters
 import io.github.luteoos.learnenglish.view.recyclerview.RVUnits
 import io.github.luteoos.learnenglish.viewmodel.UnitsFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_units.*
@@ -20,10 +21,16 @@ class UnitsFragment: BaseFragmentMVVM<UnitsFragmentViewModel>() {
         viewModel = UnitsFragmentViewModel()
         connectToVMMessage()
         setBindings()
+        viewModel.getUnitsList()
     }
 
     override fun onVMMessage(msg: String?) {
-
+        when(msg){
+            Parameters.API_ERROR -> {
+                Toasty.error(context!!, R.string.api_error).show()
+                progressBar.visibility = View.GONE
+            }
+        }
     }
 
     private fun setBindings(){
@@ -38,7 +45,8 @@ class UnitsFragment: BaseFragmentMVVM<UnitsFragmentViewModel>() {
     }
 
     private fun initRV(list: MutableList<ResponseUnit>){
-        rvUnits.apply{
+        progressBar.visibility = View.GONE
+        rvTasks.apply{
             layoutManager = LinearLayoutManager(context)
             adapter = RVUnits(list, context)
         }

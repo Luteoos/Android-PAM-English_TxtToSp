@@ -6,4 +6,9 @@
     <string name="pick_unit">Choose Unit:</string>
     <string name="pick_task">Choose Task:</string>
     <string name="list_empty">List is empty!</string>
+    <string name="task_practice">PRACTICE</string>
+    <string name="task_test">TEST</string>
+    <string name="picture_next">Next</string>
+    <string name="picture_previous">Previous</string>
+    <string name="picture_read_again">Read again!</string>
 </resources>

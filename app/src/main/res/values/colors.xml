@@ -5,6 +5,7 @@
     <color name="colorAccent">#22d2dd</color>
 
         <color name="white">#ffffff</color>
+         <color name="red">#cc0000</color>
 
         <color name="colorUnread">#e4ded9</color>
         <color name="colorLandingBackground">#fdfdfe</color>
