@@ -11,4 +11,5 @@
     <string name="picture_next">Next</string>
     <string name="picture_previous">Previous</string>
     <string name="picture_read_again">Read again!</string>
+    <string name="end">END</string>
 </resources>

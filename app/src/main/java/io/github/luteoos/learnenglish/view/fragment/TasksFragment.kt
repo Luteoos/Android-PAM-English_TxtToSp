@@ -13,17 +13,27 @@ import io.github.luteoos.learnenglish.utils.Parameters
 import io.github.luteoos.learnenglish.view.recyclerview.RVTasks
 import io.github.luteoos.learnenglish.viewmodel.TasksFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_tasks.*
+import org.jetbrains.anko.support.v4.intentFor
 
 @SuppressLint("ValidFragment")
-class TasksFragment(val id: String): BaseFragmentMVVM<TasksFragmentViewModel>() {
+class TasksFragment(): BaseFragmentMVVM<TasksFragmentViewModel>() {
+
+    private var uuid: String = ""
 
     override fun getLayoutID(): Int = R.layout.fragment_tasks
 
+init {
+        viewModel = TasksFragmentViewModel()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = TasksFragmentViewModel()
-        connectToVMMessage()
         setBindings()
+        connectToVMMessage()
+    }
+
+    fun setID(id: String){
+        uuid = id
         viewModel.getTasksList(id)
     }
 

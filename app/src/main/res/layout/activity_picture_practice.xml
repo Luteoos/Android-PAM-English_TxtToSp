@@ -15,14 +15,14 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnNext" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" android:visibility="gone"/>
+            android:layout_marginEnd="8dp" android:visibility="gone" android:background="@color/colorAfter"/>
     <Button
             android:text="@string/picture_previous"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnPrev" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" android:visibility="gone"/>
+            android:layout_marginStart="8dp" android:visibility="gone" android:background="@color/colorAfter"/>
     <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp" tools:srcCompat="@tools:sample/avatars"

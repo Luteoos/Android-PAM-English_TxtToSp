@@ -38,6 +38,9 @@ class PicturePracticeActivity: BaseActivityMVVM<PictureViewModel>() {
         })
         reader = TextToSpeech(this, TextToSpeech.OnInitListener {  })
         reader.language = Locale.US
+        btnBack.onClick {
+            onBackPressed()
+        }
         if(isNetworkOnLine)
             viewModel.getPictureList(id)
         else
@@ -51,14 +54,14 @@ class PicturePracticeActivity: BaseActivityMVVM<PictureViewModel>() {
 
     override fun onVMMessage(msg: String?) {
         when(msg){
-            Parameters.API_ERROR -> Toasty.error(this, R.string.api_error).show()
+            Parameters.API_ERROR -> {
+                Toasty.error(this, R.string.api_error).show()
+                onBackPressed()
+            }
         }
     }
 
     private fun setBindings(){
-        btnBack.onClick {
-            onBackPressed()
-        }
         btnNext.onClick {
             currentIteration++
             if(viewModel.list.value != null)

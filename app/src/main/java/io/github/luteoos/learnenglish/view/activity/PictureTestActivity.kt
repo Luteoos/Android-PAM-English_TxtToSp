@@ -22,7 +22,7 @@ class PictureTestActivity: BaseActivityMVVM<PictureViewModel>() {
     private var currentIteration = 0
     private lateinit var reader: TextToSpeech
     private var id: String = ""
-    private lateinit var photos: MutableList<ImageView>
+    private var photos: MutableList<ImageView> = mutableListOf()
 
     override fun getLayoutID(): Int = R.layout.activity_picture_test
 
@@ -42,6 +42,9 @@ class PictureTestActivity: BaseActivityMVVM<PictureViewModel>() {
         })
         reader = TextToSpeech(this, TextToSpeech.OnInitListener {  })
         reader.language = Locale.US
+        btnBack.onClick {
+            onBackPressed()
+        }
         if(isNetworkOnLine)
             viewModel.getPictureList(id)
         else
@@ -56,7 +59,10 @@ class PictureTestActivity: BaseActivityMVVM<PictureViewModel>() {
 
     override fun onVMMessage(msg: String?) {
         when(msg){
-            Parameters.API_ERROR -> Toasty.error(this, R.string.api_error).show()
+            Parameters.API_ERROR -> {
+                Toasty.error(this, R.string.api_error).show()
+                onBackPressed()
+            }
         }
     }
 
@@ -73,16 +79,20 @@ class PictureTestActivity: BaseActivityMVVM<PictureViewModel>() {
     }
 
     private fun setButtonsVisibility(){
-        if(viewModel.list.value!!.size > currentIteration)
+        if(viewModel.list.value!!.size > 1+currentIteration)
             btnNext.visibility = View.VISIBLE
-        else
-            btnNext.visibility = View.GONE
+        else{
+            btnNext.onClick {
+                onBackPressed()
+            }
+            btnNext.text = getString(R.string.end)
+        }
     }
 
     private fun loadImage(url: String, word: String){
-        val correct = Random().nextInt(0-3)
+        val correct = Random().nextInt(3)
         var iterator = 0
-        val randomPics = viewModel.getRandomPictures()
+        val randomPics = viewModel.getRandomPictures(url)
         Glide.with(this)
             .load(url)
             .into(photos[correct])

@@ -56,10 +56,11 @@ class MainScreenActivity : BaseActivityMVVM<MainScreenViewModel>() {
 
     private fun initTaskFragment(id: String){
         isUnitShow = false
+        val intent = TasksFragment()
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment, TasksFragment(id))
+            .replace(R.id.fragment, intent)
             .commit()
-
+        intent.setID(id)
     }
 
     private fun startPicturePracticeActivity(id: String){
@@ -69,7 +70,9 @@ class MainScreenActivity : BaseActivityMVVM<MainScreenViewModel>() {
     }
 
     private fun startPictureTestActivity(id: String){
-
+        val intent = Intent(this, PictureTestActivity::class.java)
+        intent.putExtra(Parameters.ID_FOR_PIC, id)
+        startActivity(intent)
     }
 
     private fun setFragment(fragment: Fragment){

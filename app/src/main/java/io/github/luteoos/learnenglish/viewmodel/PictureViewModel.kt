@@ -31,11 +31,14 @@ class PictureViewModel : BaseViewModel() {
             }))
     }
 
-    fun getRandomPictures(): MutableList<String>{
+    fun getRandomPictures(url: String): MutableList<String>{
         val list: MutableList<String> = MutableList(0) {""}
-        this@PictureViewModel.list.value!!.forEach { list.add(it.url) }
+        this@PictureViewModel.list.value!!.forEach {
+            if(it.url !=url)
+                list.add(it.url)
+        }
         val returnList: MutableList<String> = MutableList(0){""}
-        while (returnList.size <3){
+        while (returnList.size <3 && list.size != 0){
             returnList.add(list[Random().nextInt(list.size-1)])
         }
         return returnList
